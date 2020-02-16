@@ -25,6 +25,7 @@ public:
     std::vector<int> GetNeighboors()const;
     void SetID(int id);
     void SetNeighboors(std::vector<int> v);
+    /*----------*/
 };
 
 #endif /* Node_hpp */
