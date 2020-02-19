@@ -18,22 +18,28 @@
 
 class Node{
 private:
-    int ID=0;
-    std::vector<int> neighboor{1};
-    //std::string MAC_add;
+    std::string ID=0;
+    //std::vector<int> neighboor{1};
+    std::string MAC_add;
+    std::string packet;
 public:
     /*Constructors*/
     Node()=default;
-    Node(int id,std::vector<int> _neighboor);
+    Node(std::string id,std::string MAC);
+    Node(std::string id,std::string MAC,std::string p);//three arguments
     Node(const Node &nodo);
     /*Get*/
-    int GetID()const;
-    std::vector<int> GetNeighboors()const;
+    std::string GetID()const;
+    //std::vector<int> GetNeighboors()const;
+    std::string GetMAC_add()const;
+    std::string GetPacket()const;
     /*Set*/
-    void SetID(int id);
-    void SetNeighboors(std::vector<int> v);
+    void SetID(std::string id);
+    //void SetNeighboors(std::vector<int> v);
+    void SetMac_add(std::string mac);
+    void SetPacket(std::string p);
     /*Methods*/
-    /* void Sender(uint package);*/
+    void Pack();// Pack information...
 };
 
 #endif /* Node_hpp */

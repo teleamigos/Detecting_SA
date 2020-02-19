@@ -9,18 +9,16 @@
 #include <iostream>
 #include "Node.hpp"
 #include <vector>
+#include <string>
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
-    std::vector<int> v{1,2,3};
-    int a;
-    int b=5;
-    Node n;
-    Node n1(1,v);
-    Node n2(n1);
-    a=n.GetID();
-    std::cout<<"your ID :"<<a;
-    n2.SetID(b);
-    n.SetNeighboors(v);
+    std::cout<<"this is a main test..."<<std::endl;
+    std::cout<<"Create a packet to send through LoRa"<<std::endl;
+    std::string ID,MAC;
+    ID="1";
+    MAC="c8:e0:eb:38:c8:d3 ";
+    Node n(ID,MAC);
+    n.Pack();
+    std::cout<<"The packet is : "<<n.GetPacket()<<std::endl;
     return 0;
 }
