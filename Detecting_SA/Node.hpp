@@ -18,7 +18,7 @@
 
 class Node{
 private:
-    std::string ID=0;
+    std::string ID;
     //std::vector<int> neighboor{1};
     std::string MAC_add;
     std::string packet;
