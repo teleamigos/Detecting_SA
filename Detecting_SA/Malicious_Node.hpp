@@ -21,20 +21,10 @@
 class Malicious_Node: public Node
 {
 private:
-    size_t N_id;//Number of IDs
-    std::vector<std::string> Fake_ids;
 public:
     /*Constructors*/
     Malicious_Node()=default;
-    Malicious_Node(size_t N,std::vector<std::string> ids);
     /*Getters*/
-    size_t GetNID()const;
-    std::vector<std::string> GetFakeIDs()const;
     /*Setters*/
-    void SetNID(size_t N);
-    void SetFakeIDs(std::vector<std::string> ids);
     /*Methods*/
-    void AddID(std::string id);
-    std::vector<std::string> Make_FakedID();
-    void Print()const;
 };
