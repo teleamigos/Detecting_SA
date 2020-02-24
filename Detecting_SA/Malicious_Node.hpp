@@ -11,20 +11,28 @@
 /*-----------------------------------------------------------------------------------------------------
                                 class Malicious_Node definition
 -----------------------------------------------------------------------------------------------------*/
-#include <stdio.h>
-#include <iostream>
 #include "Node.hpp"
 #include <vector>
 #include <string>
-#endif /* Malicious_Node_hpp */
-
+using namespace std;
 class Malicious_Node: public Node
 {
 private:
+    size_t N_identities;
+    vector<char> fake_identities;
 public:
     /*Constructors*/
     Malicious_Node()=default;
+    Malicious_Node(size_t N,vector<char> fake_i);
     /*Getters*/
+    size_t GetNID()const;
+    vector<char> GetFakeID()const;
     /*Setters*/
+    void SetNID(size_t N_ID);
+    void SetFakeID(vector<char> fake_ID);
     /*Methods*/
+    void AddFakeID(char id);
+    void Send();//No sé como vergas lo vamos a usar pero aqui ta
 };
+#endif /* Malicious_Node_hpp */
+

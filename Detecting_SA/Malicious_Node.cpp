@@ -11,3 +11,32 @@
 /*-----------------------------------------------------------------------------------------------------
                                      class Node implementation
 -----------------------------------------------------------------------------------------------------*/
+
+/*Constructors*/
+Malicious_Node::Malicious_Node(size_t N,vector<char> fake_i):N_identities(N),fake_identities(fake_i)
+{
+    //
+}
+/*Getters*/
+size_t Malicious_Node::GetNID()const
+{
+    return this->N_identities;
+}
+vector<char> Malicious_Node::GetFakeID()const
+{
+    return this->fake_identities;
+}
+/*Setters*/
+void Malicious_Node::SetNID(size_t N_ID)
+{
+    this->N_identities=N_ID;
+}
+void Malicious_Node::SetFakeID(vector<char> fake_ID)
+{
+    this->fake_identities=fake_ID;
+}
+/*Methods*/
+void Malicious_Node::AddFakeID(char id)
+{
+    this->fake_identities.insert(this->fake_identities.begin(), id);
+}
