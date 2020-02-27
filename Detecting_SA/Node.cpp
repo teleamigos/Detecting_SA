@@ -52,3 +52,8 @@ void Node::Pack()
     this->pack.push_back(this->type_m);
     this->pack.push_back(this->ID);
 }
+
+void Node::Clear_pack()
+{
+    this->pack.clear();
+}

@@ -40,3 +40,20 @@ void Malicious_Node::AddFakeID(char id)
 {
     this->fake_identities.insert(this->fake_identities.begin(), id);
 }
+
+vector<string> Malicious_Node::Create_pack()
+{
+    /*Packing information to send in LoRa...*/
+    int i;
+    string packet;
+    vector<string> fake_packet;
+    for (i=0;i<this->fake_identities.size();i++)
+    {
+        SetID(this->fake_identities.at(i));
+        Pack();
+        packet=GetPack();
+        fake_packet.insert(fake_packet.begin(), packet);
+        Clear_pack();
+    }
+    return fake_packet;
+}

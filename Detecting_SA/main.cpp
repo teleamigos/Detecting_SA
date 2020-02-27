@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Node.hpp"
+#include "Malicious_Node.hpp"
 using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -16,10 +17,24 @@ int main(int argc, const char * argv[]) {
     /*init*/
     Node n;
     unsigned char ID='1';
+    Malicious_Node fake;
+    unsigned char ID2='2';
+    unsigned char ID3='0';
+    vector<string> fake_packets;
+    int i;
     /*code*/
     n.SetID(ID);
     cout<<"ID's node : "<<n.GetID()<<"\n"<<"Type message : "<<n.GetTypeM()<<endl;
     n.Pack();
     cout<<"Message : "<<n.GetPack()<<endl;
+    cout<<"Faking identities..."<<endl;
+    fake.AddFakeID(ID);
+    fake.AddFakeID(ID2);
+    fake.AddFakeID(ID3);
+    fake_packets=fake.Create_pack();
+    for (i=0;i<fake_packets.size();i++)
+    {
+        cout<<"packet \t "<<i<<" is \t "<<fake_packets.at(i)<<endl;
+    }
     return 0;
 }

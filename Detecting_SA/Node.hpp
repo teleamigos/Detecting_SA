@@ -43,6 +43,7 @@ public:
     /*Methods
      Empaqueta ID y tipo en una variable*/
     void Pack();// Pack information...
+    void Clear_pack();
 };
 
 #endif /* Node_hpp */

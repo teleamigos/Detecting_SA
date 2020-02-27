@@ -14,6 +14,7 @@
 #include "Node.hpp"
 #include <vector>
 #include <string>
+#include <iostream>
 using namespace std;
 class Malicious_Node: public Node
 {
@@ -32,7 +33,7 @@ public:
     void SetFakeID(vector<char> fake_ID);
     /*Methods*/
     void AddFakeID(char id);
-    void Send();//No sé como vergas lo vamos a usar pero aqui ta
+    vector<string> Create_pack();//No sé como vergas lo vamos a usar pero aqui ta
 };
 #endif /* Malicious_Node_hpp */
 
