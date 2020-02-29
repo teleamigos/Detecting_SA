@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Node.hpp"
 #include "Malicious_Node.hpp"
+#include "Receiver_Node.hpp"
 using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -16,6 +17,10 @@ int main(int argc, const char * argv[]) {
     std::cout<<"Create a packet to send through LoRa"<<std::endl;
     /*init*/
     Node n;
+    Node good_node;
+    unsigned char Id='9';
+    good_node.SetID(Id);
+    Receiver_Node receiver(good_node);
     unsigned char ID='1';
     Malicious_Node fake;
     unsigned char ID2='2';
