@@ -48,5 +48,31 @@ void Receiver_Node::Unpack(string message_received)
      2 .- Tipo de mensaje 1 byte
      3.-  RSSI recibido 4 bytes
     */
-    
+    string rssi,id;
+    id=message_received[0];
+    rssi=message_received[2];
+    rssi=rssi+message_received[3];
+    rssi+=message_received[4];
+    this->ID_List.push_back(id);
+    this->RSSI_list.push_back(rssi);
+}
+
+void Receiver_Node::Print_List()
+{
+  /*print method*/
+  int i;
+  for (i=0;i<this->ID_List.size();i++)
+  {
+    cout<<i+1<<"ID :"<<this->ID_List.at(i)<<"RSSI : "<<this->RSSI_list.at(i)<<endl;
+  }
+}
+
+void Receiver_Node::Discard()
+{
+  /*Discard algorithm */
+  int i;
+  for (i=0;i<this->RSSI_list.size();i++)
+  {
+      
+  }
 }

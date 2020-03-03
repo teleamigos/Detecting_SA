@@ -13,6 +13,7 @@
 -----------------------------------------------------------------------------------------------------*/
 #include <string>
 #include <vector>
+#include <iostream>
 #include "Node.hpp"
 
 using namespace std;
@@ -20,7 +21,8 @@ class Receiver_Node
 {
 private:
     Node ThisNode;
-    int range_tol=0.5; //Rango de toleracia para RSSI 0.5 db por defecto
+    int range_tol; //Rango de toleracia para RSSI
+    int RSSI_prom;
     vector<string> ID_List;
     vector<string> RSSI_list;
 public:
