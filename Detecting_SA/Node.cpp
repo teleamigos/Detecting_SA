@@ -21,28 +21,28 @@ Node::Node(const Node &nodo)
     this->type_m=nodo.type_m;
 }
 /*Get*/
-unsigned char Node::GetID()const
+uint8_t Node::GetID()const
 {
     return this->ID;
 }
-unsigned char Node::GetTypeM()const
+uint8_t Node::GetTypeM()const
 {
     return this->type_m;
 }
-string Node::GetPack()const
+vector<uint8_t> Node::GetPack()const
 {
     return this->pack;
 }
 /*Set*/
-void Node::SetID(unsigned char id)
+void Node::SetID(uint8_t id)
 {
     this->ID=id;
 }
-void Node::SetTypeM(unsigned char type)
+void Node::SetTypeM(uint8_t type)
 {
     this->type_m=type;
 }
-void Node::SetPack(string p)
+void Node::SetPack(vector<uint8_t> p)
 {
     this->pack=p;
 }

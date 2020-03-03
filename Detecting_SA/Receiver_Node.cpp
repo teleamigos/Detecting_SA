@@ -12,7 +12,7 @@ Receiver_Node::Receiver_Node(Node nodo):ThisNode(nodo)
 {
     //Exceptions
 }
-Receiver_Node::Receiver_Node(Node nodo,vector<string> ids,vector<string> rssi): ThisNode(nodo),ID_List(ids),RSSI_list(rssi)
+Receiver_Node::Receiver_Node(Node nodo,vector<uint8_t> ids,vector<float> rssi): ThisNode(nodo),ID_List(ids),RSSI_list(rssi)
 {
     //Exceptions
 }
@@ -21,25 +21,25 @@ Node Receiver_Node::GetThisNode()const
 {
     return this->ThisNode;
 }
-vector<string> Receiver_Node::GetIDList()const
+vector<uint8_t> Receiver_Node::GetIDList()const
 {
     return this->ID_List;
 }
-vector<string> Receiver_Node::GetRSSIList()const
+vector<float> Receiver_Node::GetRSSIList()const
 {
     return this->RSSI_list;
 }
 /*Setters*/
-void Receiver_Node::SetIDList(vector<string> ids)
+void Receiver_Node::SetIDList(vector<uint8_t> ids)
 {
     this->ID_List=ids;
 }
-void Receiver_Node::SetRSSIList(vector<string> rssi)
+void Receiver_Node::SetRSSIList(vector<float> rssi)
 {
     this->RSSI_list=rssi;
 }
 /*Methods*/
-void Receiver_Node::Unpack(string message_received)
+void Receiver_Node::Unpack(uint8_t ID,uint8_t type, float RSSI,float NSR)
 {
     //No implementado aun...
     /*
@@ -48,5 +48,27 @@ void Receiver_Node::Unpack(string message_received)
      2 .- Tipo de mensaje 1 byte
      3.-  RSSI recibido 4 bytes
     */
-    
+    this->ID_List.push_back(ID);
+    this->RSSI_list.push_back(RSSI);
+    this->NSR.push_back(NSR);
+}
+
+void Receiver_Node::Print_List()
+{
+  /*print method*/
+  int i;
+  for (i=0;i<this->ID_List.size();i++)
+  {
+    cout<<i+1<<"ID :"<<this->ID_List.at(i)<<"RSSI : "<<this->RSSI_list.at(i)<<endl;
+  }
+}
+
+void Receiver_Node::Discard()
+{
+  /*Discard algorithm */
+  int i;
+  for (i=0;i<this->RSSI_list.size();i++)
+  {
+      
+  }
 }
