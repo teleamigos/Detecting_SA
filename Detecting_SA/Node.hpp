@@ -11,13 +11,13 @@
 /*-----------------------------------------------------------------------------------------------------
                                      class Node definition
 -----------------------------------------------------------------------------------------------------*/
-#include <string>
+#include <vector>
 using namespace std;
 class Node{
 private:
-    unsigned char ID; //1 byte para el 1d
-    unsigned char type_m='0'; //Mesnaje hello (1 byte)
-    string pack; // guarda en 2 bytes
+    uint8_t ID; //1 byte para el 1d
+    uint8_t type_m='0'; //Mesnaje hello (1 byte)
+    vector<uint8_t> pack; // guarda en 2 bytes
 public:
     /*Constructors
      Construyen la clase de 3 diferentes formas:
@@ -25,21 +25,21 @@ public:
      2.- Pasando dos argumentos ID y el tipo de mensaje
      3.- Pasando otro objecto de la clase Node*/
     Node()=default;
-    Node(unsigned char id,unsigned char type);
+    Node(uint8_t id,uint8_t type);
     Node(const Node &nodo);
     /*Destructor
      Destruye la clase*/
     ~Node()=default;
     /*Get
      Nos permite obtener datos los miembros de la clase*/
-    unsigned char GetID()const;
-    unsigned char GetTypeM()const;
-    string GetPack()const;
+    uint8_t GetID()const;
+    uint8_t GetTypeM()const;
+    vector<uint8_t> GetPack()const;
     /*Set
      Nos permite modificar el contenido de los datos miembro*/
-    void SetID(unsigned char id);
-    void SetTypeM(unsigned char type);
-    void SetPack(string p);
+    void SetID(uint8_t id);
+    void SetTypeM(uint8_t type);
+    void SetPack(vector<uint8_t> p);
     /*Methods
      Empaqueta ID y tipo en una variable*/
     void Pack();// Pack information...

@@ -13,7 +13,7 @@
 -----------------------------------------------------------------------------------------------------*/
 
 /*Constructors*/
-Malicious_Node::Malicious_Node(size_t N,vector<char> fake_i):N_identities(N),fake_identities(fake_i)
+Malicious_Node::Malicious_Node(size_t N,vector<uint8_t> fake_i):N_identities(N),fake_identities(fake_i)
 {
     //
 }
@@ -22,7 +22,7 @@ size_t Malicious_Node::GetNID()const
 {
     return this->N_identities;
 }
-vector<char> Malicious_Node::GetFakeID()const
+vector<uint8_t> Malicious_Node::GetFakeID()const
 {
     return this->fake_identities;
 }
@@ -31,29 +31,29 @@ void Malicious_Node::SetNID(size_t N_ID)
 {
     this->N_identities=N_ID;
 }
-void Malicious_Node::SetFakeID(vector<char> fake_ID)
+void Malicious_Node::SetFakeID(vector<uint8_t> fake_ID)
 {
     this->fake_identities=fake_ID;
 }
 /*Methods*/
-void Malicious_Node::AddFakeID(char id)
+void Malicious_Node::AddFakeID(uint8_t id)
 {
     this->fake_identities.insert(this->fake_identities.begin(), id);
 }
 
-vector<string> Malicious_Node::Create_pack()
+vector<vector<uint8_t>> Malicious_Node::Create_pack()
 {
-    /*Packing information to send in LoRa...*/
     int i;
-    string packet;
-    vector<string> fake_packet;
+    vector<uint8_t> packet;
+    vector<vector<uint8_t>> fake_packet;
     for (i=0;i<this->fake_identities.size();i++)
     {
         SetID(this->fake_identities.at(i));
         Pack();
         packet=GetPack();
-        fake_packet.insert(fake_packet.begin(), packet);
+        fake_packet.push_back(packet);
         Clear_pack();
     }
     return fake_packet;
 }
+

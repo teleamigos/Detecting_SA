@@ -20,20 +20,20 @@ class Malicious_Node: public Node
 {
 private:
     size_t N_identities;
-    vector<char> fake_identities;
+    vector<uint8_t> fake_identities;
 public:
     /*Constructors*/
     Malicious_Node()=default;
-    Malicious_Node(size_t N,vector<char> fake_i);
+    Malicious_Node(size_t N,vector<uint8_t> fake_i);
     /*Getters*/
     size_t GetNID()const;
-    vector<char> GetFakeID()const;
+    vector<uint8_t> GetFakeID()const;
     /*Setters*/
     void SetNID(size_t N_ID);
-    void SetFakeID(vector<char> fake_ID);
+    void SetFakeID(vector<uint8_t> fake_ID);
     /*Methods*/
-    void AddFakeID(char id);
-    vector<string> Create_pack();//No sé como vergas lo vamos a usar pero aqui ta
+    void AddFakeID(uint8_t id);
+    vector<vector<uint8_t>> Create_pack();//No sé como vergas lo vamos a usar pero aqui ta
 };
 #endif /* Malicious_Node_hpp */
 
