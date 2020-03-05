@@ -21,8 +21,8 @@ class Receiver_Node
 {
 private:
     Node ThisNode;
-    float range_tol; //Rango de toleracia para RSSI
-    float RSSI_prom;
+    float range_tol=0.7157; //Rango de toleracia para RSSI
+    vector<float> RSSI_prom{-74.113,-84.797,-86.72};
     vector<uint8_t> ID_List;
     vector<float> RSSI_list;
     vector<float> NSR;

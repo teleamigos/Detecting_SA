@@ -71,7 +71,7 @@ void Receiver_Node::Discard()
     vector<uint8_t> ids;
     vector<float> rssi_prom;
     bool aux;
-    float rssi_aux,c,res;
+    float rssi_aux,c;
     for (i=0;i<this->ID_List.size();i++)
     {
         aux=false;
