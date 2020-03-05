@@ -55,20 +55,39 @@ void Receiver_Node::Unpack(uint8_t ID,uint8_t type, float RSSI,float NSR)
 
 void Receiver_Node::Print_List()
 {
-  /*print method*/
-  int i;
-  for (i=0;i<this->ID_List.size();i++)
-  {
+    /*print method*/
+    int i;
+    for (i=0;i<this->ID_List.size();i++)
+    {
     cout<<i+1<<"ID :"<<this->ID_List.at(i)<<"RSSI : "<<this->RSSI_list.at(i)<<endl;
-  }
+    }
 }
 
 void Receiver_Node::Discard()
 {
   /*Discard algorithm */
-  int i;
-  for (i=0;i<this->RSSI_list.size();i++)
-  {
-      
-  }
+    int i,j,c;
+    size_t tam;
+    vector<uint8_t> ids;
+    bool aux;
+    for (i=0;i<this->ID_List.size();i++)
+    {
+        aux=false;
+        if(ids.size()==0)
+        {
+            ids.push_back(this->ID_List.at(i));
+            
+        }
+        else
+        {
+            tam=ids.size();
+            for(j=0;j<tam;j++)
+            {
+                if(this->ID_List.at(i)==ids.at(j))
+                {
+                    aux=true;
+                }
+            }
+        }
+    }
 }
