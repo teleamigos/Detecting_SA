@@ -68,20 +68,24 @@ void Receiver_Node::Discard()
   /*Discard algorithm */
     int i,j;
     size_t tam;
-    vector<uint8_t> ids;
-    vector<float> rssi_prom;
+    vector<uint8_t> ids;//it storages only IDs who sent Hello message
+    vector<float> rssi_prom; //It storages rssi averages for each ID
     bool aux;
     float rssi_aux,c;
+    
     for (i=0;i<this->ID_List.size();i++)
     {
+        /*Resume ID list*/
         aux=false;
         if(ids.size()==0)
         {
+            /*If is empty, add the first id*/
             ids.push_back(this->ID_List.at(i));
             
         }
         else
         {
+            /*In other way, find the currently ID in the list and only add it if it is not yet*/
             tam=ids.size();
             for(j=0;j<tam;j++)
             {
@@ -96,8 +100,10 @@ void Receiver_Node::Discard()
             }
         }
     }
+    
     for(i=0;i<ids.size();i++)
     {
+        /*This section computes rssi average*/
         rssi_aux=0;
         c=0;
         for(j=0;j<this->ID_List.size();j++)
