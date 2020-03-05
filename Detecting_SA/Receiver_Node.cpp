@@ -66,10 +66,12 @@ void Receiver_Node::Print_List()
 void Receiver_Node::Discard()
 {
   /*Discard algorithm */
-    int i,j,c;
+    int i,j;
     size_t tam;
     vector<uint8_t> ids;
+    vector<float> rssi_prom;
     bool aux;
+    float rssi_aux,c,res;
     for (i=0;i<this->ID_List.size();i++)
     {
         aux=false;
@@ -88,6 +90,25 @@ void Receiver_Node::Discard()
                     aux=true;
                 }
             }
+            if(aux==false)
+            {
+                ids.push_back(this->ID_List.at(i));
+            }
         }
     }
+    for(i=0;i<ids.size();i++)
+    {
+        rssi_aux=0;
+        c=0;
+        for(j=0;j<this->ID_List.size();j++)
+        {
+            if(ids.at(i)==this->ID_List.at(j))
+            {
+                rssi_aux+=this->RSSI_list.at(j);
+                c++;
+            }
+        }
+        rssi_prom.push_back(rssi_aux/c);
+    }
+    
 }
