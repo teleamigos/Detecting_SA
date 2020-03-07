@@ -21,11 +21,12 @@ class Receiver_Node
 {
 private:
     Node ThisNode;
-    float range_tol=0.7157; //Rango de toleracia para RSSI
-    vector<float> RSSI_prom{-74.113,-84.797,-86.72};
+    const vector<float> range_tol{0.3961,2.4005,4.0208,0.9637,1.0804,1.3518,2.1859,1.301};
+    /*Range of tol                0.20    0.40    1      2      4     8       16     32*/
     vector<uint8_t> ID_List;
     vector<float> RSSI_list;
     vector<float> NSR;
+    vector<vector<uint8_t>> ID_detected;
 public:
     /*Constructors*/
     Receiver_Node()=default;
@@ -35,6 +36,7 @@ public:
     Node GetThisNode()const;
     vector<uint8_t> GetIDList()const;
     vector<float> GetRSSIList()const;
+    vector<vector<uint8_t>> GetID_detected()const;
     /*Setters*/
     //void SetThisNode(Node nodo);
     void SetIDList(vector<uint8_t> ids);
@@ -43,6 +45,7 @@ public:
     void Unpack(uint8_t ID,uint8_t type, float RSSI,float NSR);//Unpack information
     void Print_List();//print the list of messages with RSSI
     void Discard();//Algortihm to disrcard bad nodes...
+    void Print_ID_detected()const;
 };
 
 #endif /* Receiver_Node_hpp */

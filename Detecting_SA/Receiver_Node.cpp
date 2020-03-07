@@ -29,6 +29,10 @@ vector<float> Receiver_Node::GetRSSIList()const
 {
     return this->RSSI_list;
 }
+vector<vector<uint8_t>> Receiver_Node::GetID_detected()const
+{
+    return this->ID_detected;
+}
 /*Setters*/
 void Receiver_Node::SetIDList(vector<uint8_t> ids)
 {
@@ -71,7 +75,7 @@ void Receiver_Node::Discard()
     vector<uint8_t> ids;//it storages only IDs who sent Hello message
     vector<float> rssi_prom; //It storages rssi averages for each ID
     bool aux;
-    float rssi_aux,c;
+    float rssi_aux,c,r_error;
     
     for (i=0;i<this->ID_List.size();i++)
     {
@@ -116,5 +120,21 @@ void Receiver_Node::Discard()
         }
         rssi_prom.push_back(rssi_aux/c);
     }
-    
+    /*Version for 2 nodes of sybil attack*/
+    r_error=rssi_prom.at(0)-rssi_prom.at(1);
+    //define distance
+    if (r_error>this->range_tol.at(0))
+    {
+        this->ID_detected.push_back(ids);
+    }
+}
+
+void Receiver_Node::Print_ID_detected()const
+{
+    /*print*/
+    int i;
+    for(i=0;i<this->ID_detected.size();i++)
+    {
+        //
+    }
 }
