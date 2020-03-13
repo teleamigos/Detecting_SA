@@ -120,6 +120,14 @@ void Receiver_Node::Discard()
         rssi+=dif_rssi.at(i);
     }
     prom=rssi/dif_rssi.size();
+    if(prom<this->range_tol.at(0))
+    {
+        //This node is real
+    }
+    else
+    {
+        //this node is fake!
+    }
 }
 
 void Receiver_Node::Print_ID_detected()const
