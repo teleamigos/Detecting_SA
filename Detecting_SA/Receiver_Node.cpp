@@ -69,8 +69,57 @@ void Receiver_Node::Print_List()
 
 void Receiver_Node::Discard()
 {
-  /*Discard algorithm */
+    /*Discard algorithm */
+    int i,j;
+    size_t tam;
+    vector<uint8_t> ids;//it storages only IDs who sent Hello message
+    vector<float> dif_rssi; //It storages rssi averages for each ID
+    bool aux;
+    float next_rssi,dif,prom,rssi;
     
+    for (i=0;i<this->ID_List.size();i++)
+    {
+        /*Resume ID list*/
+        aux=false;
+        if(ids.size()==0)
+        {
+            /*If is empty, add the first id*/
+            ids.push_back(this->ID_List.at(i));
+            
+        }
+        else
+        {
+            /*In other way, find the currently ID in the list and only add it if it is not yet*/
+            tam=ids.size();
+            for(j=0;j<tam;j++)
+            {
+                if(this->ID_List.at(i)==ids.at(j))
+                {
+                    aux=true;
+                }
+            }
+            if(aux==false)
+            {
+                ids.push_back(this->ID_List.at(i));
+            }
+        }
+    }
+    for (i=0;i<this->RSSI_list.size();i++)
+    {
+        dif=0;
+        if(i % 2 ==0)
+        {
+            next_rssi=this->RSSI_list.at(i+1);
+            dif=this->RSSI_list.at(i)-next_rssi;
+            dif_rssi.push_back(dif);
+        }
+    }
+    rssi=0;
+    for(i=0;i<dif_rssi.size();i++)
+    {
+        rssi+=dif_rssi.at(i);
+    }
+    prom=rssi/dif_rssi.size();
 }
 
 void Receiver_Node::Print_ID_detected()const
