@@ -70,63 +70,7 @@ void Receiver_Node::Print_List()
 void Receiver_Node::Discard()
 {
   /*Discard algorithm */
-    int i,j;
-    size_t tam;
-    vector<uint8_t> ids;//it storages only IDs who sent Hello message
-    vector<float> rssi_prom; //It storages rssi averages for each ID
-    bool aux;
-    float rssi_aux,c,r_error;
     
-    for (i=0;i<this->ID_List.size();i++)
-    {
-        /*Resume ID list*/
-        aux=false;
-        if(ids.size()==0)
-        {
-            /*If is empty, add the first id*/
-            ids.push_back(this->ID_List.at(i));
-            
-        }
-        else
-        {
-            /*In other way, find the currently ID in the list and only add it if it is not yet*/
-            tam=ids.size();
-            for(j=0;j<tam;j++)
-            {
-                if(this->ID_List.at(i)==ids.at(j))
-                {
-                    aux=true;
-                }
-            }
-            if(aux==false)
-            {
-                ids.push_back(this->ID_List.at(i));
-            }
-        }
-    }
-    
-    for(i=0;i<ids.size();i++)
-    {
-        /*This section computes rssi average*/
-        rssi_aux=0;
-        c=0;
-        for(j=0;j<this->ID_List.size();j++)
-        {
-            if(ids.at(i)==this->ID_List.at(j))
-            {
-                rssi_aux+=this->RSSI_list.at(j);
-                c++;
-            }
-        }
-        rssi_prom.push_back(rssi_aux/c);
-    }
-    /*Version for 2 nodes of sybil attack*/
-    r_error=rssi_prom.at(0)-rssi_prom.at(1);
-    //define distance
-    if (r_error>this->range_tol.at(0))
-    {
-        this->ID_detected.push_back(ids);
-    }
 }
 
 void Receiver_Node::Print_ID_detected()const
