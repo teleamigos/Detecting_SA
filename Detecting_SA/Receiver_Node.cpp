@@ -130,12 +130,3 @@ void Receiver_Node::Discard()
     }
 }
 
-void Receiver_Node::Print_ID_detected()const
-{
-    /*print*/
-    int i;
-    for(i=0;i<this->ID_detected.size();i++)
-    {
-        //
-    }
-}

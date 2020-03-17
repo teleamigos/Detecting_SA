@@ -21,7 +21,7 @@ int main(int argc, const char * argv[]) {
     Node n (id,type);
     Receiver_Node m(n);
     vector<uint8_t> ids{0x02,0x03,0x02,0x03,0x02,0x03,0x02,0x03,0x02,0x03};
-    vector<float> rssi{-3.5,-2.9,-3.5,-2.9,-3.6,-2.9,-4.5,-2.9,-3.5,-2.9};
+    vector<float> rssi{-3.5,-2.1,-3.6,-3.9,-3.6,-2.9,-4.5,-10.9,-1.5,-2.9};
     /*code*/
     m.SetIDList(ids);
     m.SetRSSIList(rssi);

@@ -21,7 +21,7 @@ class Receiver_Node
 {
 private:
     Node ThisNode;
-    const vector<float> range_tol{0.3961,2.4005,4.0208,0.9637,1.0804,1.3518,2.1859,1.301};
+    const vector<float> range_tol{0.1182,0.155,0.1593,0.0882,0.1265,0.1003,0.1511,0.0471};
     /*Range of tol                0.20    0.40    1      2      4     8       16     32*/
     vector<uint8_t> ID_List;
     vector<float> RSSI_list;
