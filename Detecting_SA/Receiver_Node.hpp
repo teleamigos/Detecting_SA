@@ -46,6 +46,7 @@ public:
     void Print_List();//print the list of messages with RSSI
     void Discard();//Algortihm to disrcard bad nodes...
     void Print_ID_detected()const;
+    void Clear_lists();
 };
 
 #endif /* Receiver_Node_hpp */

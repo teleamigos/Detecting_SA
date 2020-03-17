@@ -128,5 +128,12 @@ void Receiver_Node::Discard()
     {
         this->ID_detected.push_back(ids);
     }
+    
+}
+
+void Receiver_Node::Clear_lists()
+{
+  this->ID_List.clear();
+  this->RSSI_list.clear();
 }
 
